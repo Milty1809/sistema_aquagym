@@ -1,0 +1,75 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: monserrat;
+    background: linear-gradient(150deg, #00045d, #ffffff);
+    height: 130vh;
+}
+.formulario{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: azure;
+    border-radius: 10px;
+}
+.formulario h1{
+    text-align: center;
+    padding: 20px 0;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+}
+.formulario form{
+    
+   padding: 0 40px;
+   box-sizing: border-box;
+}
+form .username{
+    position: relative;
+    margin-bottom: 30px;
+}
+.username input{
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #333;
+    outline: none;
+}
+.contraseña input{
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #333;
+    outline: none;
+}
+form .contraseña{
+    position: relative;
+    margin-bottom: 30px;
+}
+form .contraseña input[type="submit"]{
+    width: 100%;
+    padding: 10px;
+    background: #100373;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.inicio_sesion{
+    width: 100%;
+    padding: 10px;
+    background: #27F5B0;
+    border: none;
+    color: #000000;
+   border-radius: 5px;
+   cursor: pointer;
+}
+.imagen{
+    display: block;
+    margin: 0 auto;
+    margin-top: 50px;
+    border-radius: 5px;
+}
