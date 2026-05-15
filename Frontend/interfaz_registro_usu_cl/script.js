@@ -1,1 +1,0 @@
-alert("Usuario registrado exitosamente");
