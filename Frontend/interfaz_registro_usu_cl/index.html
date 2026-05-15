@@ -1,48 +1,56 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REGISTRAR USUARIO</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
     <div class="formulario">
         <h1>Registrar Usuario</h1>
-        <form method="post">
+        <form method="POST" action="/registrar">
+
             <div class="nombre">
-                <input type="text" required>
+                <input type="text" name="nombre" required>
                 <label>Nombre</label>
             </div>
+
             <div class="apellido">
-                <input type="text" required>
+                <input type="text" name="apellido" required>
                 <label>Apellido</label>
             </div>
-            <div class="rol">
-                <select>
-                    <option>Entrenador</option>
-                    <option>recepcionista</option>
-                    <option>socio</option>
-                </select> 
-                <label>Rol</label>             
-            </div>
+
             <div class="username">
-                <input type="text" required>
+                <input type="text" name="username" required>
                 <label>Nombre de usuario</label>
             </div>
+
             <div class="contraseña">
-                <input type="password" required>
+                <input type="password" name="password" required>
                 <label>Contraseña</label>
             </div>
+
             <div class="confirmar_contraseña">
-                <input type="password" required>
+                <input type="password" name="confirmar_password" required>
                 <label>Confirmar Contraseña</label>
             </div>
+
             <input class="registrar_usu" type="submit" value="Registrar Usuario">
-            <div class="volver_inicio_sesion">
-                <p>¿Ya tienes una cuenta? <a href="http://127.0.0.1:5500/Frontend/interfaz_inicio_sesion/index.html">Inicia sesión aquí</a></p>
-            </div>
+
+            <p>¿Ya tienes una cuenta? <a href="/login">Inicia sesión aquí</a></p>
+
         </form>
     </div>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="mensaje-exito">
+            {{ messages[0] }}
+        </div>
+        {% endif %}
+    {% endwith %}
 </body>
+
 </html>

@@ -61,25 +61,6 @@ form .apellido input{
     border-bottom: 2px solid #333;
     outline: none;
 }
-form .rol{
-    position: relative;
-    margin-bottom: 18px;
-}
-form .rol select{
-    width: 100%;
-    padding: 10px;
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid #333;
-    outline: none;
-}
-form .rol label{
-    font-size: 14px;
-    color: #333;
-    margin-right: 10px;
-    display: block;
-    margin-top: 5px;
-}
 form .contraseña input{
     width: 100%;
     padding: 10px;
@@ -112,4 +93,20 @@ form .registrar_usu{
     color: #000000;
     cursor: pointer;
     border-radius: 5px;
+}
+.mensaje-exito {
+  background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    animation: desaparecer 4s forwards;
+}
+@keyframes desaparecer {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; display: none; }
 }
