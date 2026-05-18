@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, flash
+from Backend.modelo.modelo_login import ModeloLogin
 
 controlador_login = Blueprint('controlador_login', __name__)
 
@@ -8,6 +9,13 @@ controlador_login = Blueprint('controlador_login', __name__)
 def login():
     return render_template('interfaz_inicio_sesion/index.html')
 
+@controlador_login.route('/interfazCL')
+def interfazCL():
+    return render_template('interfaz_cliente/index.html')
+
+@controlador_login.route('/interfazAD')
+def interfazAD():
+    return render_template('interfaz_admin/index.html')
 
 @controlador_login.route('/iniciar_sesion', methods=['POST'])
 def iniciar_sesion():
@@ -19,10 +27,25 @@ def iniciar_sesion():
         flash("Todos los campos son obligatorios")
         return redirect('/login')
 
-    if username == "admin" and password == "1234":
-        return "Inicio de sesión exitoso"
+    usuario = ModeloLogin.iniciar_sesion(
+        username,
+        password
+    )
+
+    if usuario and usuario['rol'] == 'admin':
+
+        flash("Inicio de sesión exitoso")
+
+        return redirect('/interfazAD')
+    
+    if usuario and usuario['rol'] == 'cliente':
+
+        flash("Inicio de sesión exitoso")
+
+        return redirect('/interfazCL')
 
     flash("Usuario o contraseña incorrectos")
+
     return redirect('/login')
 
 

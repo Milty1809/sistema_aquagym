@@ -23,10 +23,8 @@ def registrar():
     if password != confirmar_password:
         flash("Las contraseñas no coinciden")
         return redirect('/registro')
-
-    usuarios_existentes = ["admin", "fabricio", "juan"]
-
-    if username in usuarios_existentes:
+    
+    if ModeloUsuario.existe_usuario(username):
         flash("El nombre de usuario ya existe")
         return redirect('/registro')
 
