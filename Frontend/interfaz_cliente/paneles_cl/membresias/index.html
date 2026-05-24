@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membresias</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='interfaz_cliente/paneles_cl/membresias/style.css') }}">
+
+</head>
+<body>
+
+    <div class="contenedor">
+
+        <h1>MEMBRESIAS DEL GYM</h1>
+
+        {% if membresias %}
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>ID MEMBRESIA</th>
+                    <th>NOMBRE</th>
+                    <th>DURACION</th>
+                    <th>PRECIO</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for membresia in membresias %}
+
+                <tr>
+
+                    <td>{{ membresia.id_membresia }}</td>
+
+                    <td>{{ membresia.nombre }}</td>
+
+                    <td>{{ membresia.duracion_dias }} dias</td>
+
+                    <td>{{ membresia.precio }} Bs</td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>

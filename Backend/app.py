@@ -23,6 +23,8 @@ app.secret_key = os.getenv("SECRET_KEY")
 from Backend.controlador.controlador_login import controlador_login
 from Backend.controlador.controlador_usuario import controlador_usuario
 from Backend.controlador.controlador_asistencia import controlador_asistencia
+from Backend.controlador.controlador_membresia import controlador_membresia
+from Backend.controlador.controlador_actividades import controlador_actividades
 
 # =========================
 # REGISTRAR BLUEPRINTS
@@ -30,6 +32,8 @@ from Backend.controlador.controlador_asistencia import controlador_asistencia
 app.register_blueprint(controlador_login)
 app.register_blueprint(controlador_usuario)
 app.register_blueprint(controlador_asistencia)
+app.register_blueprint(controlador_membresia)
+app.register_blueprint(controlador_actividades)
 
 
 @app.route("/panel_cl/membresias")

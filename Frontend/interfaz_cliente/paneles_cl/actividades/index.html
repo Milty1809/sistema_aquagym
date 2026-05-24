@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividades</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='interfaz_cliente/paneles_cl/actividades/style.css') }}">
+
+</head>
+<body>
+
+    <div class="contenedor">
+
+        <h1>ACTIVIDADES DEL GYM</h1>
+
+        {% if actividades %}
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>ID ACTIVIDAD</th>
+                    <th>NOMBRE</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for actividad in actividades %}
+
+                <tr>
+
+                    <td>{{ actividad.id_actividad }}</td>
+
+                    <td>{{ actividad.nombre }}</td>
+                    
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
