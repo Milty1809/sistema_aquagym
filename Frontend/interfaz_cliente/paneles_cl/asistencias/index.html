@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistencias Cliente</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='interfaz_cliente/paneles_cl/asistencias/style.css') }}">
+
+</head>
+<body>
+
+    <div class="contenedor">
+
+        <h1>ASISTENCIAS DEL CLIENTE</h1>
+
+        <form method="POST">
+
+            <input
+                type="number"
+                name="id_cliente"
+                placeholder="Ingrese su ID de cliente"
+                required
+            >
+
+            <button type="submit">
+                Buscar
+            </button>
+
+        </form>
+
+        {% if asistencias %}
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>ID ASISTENCIA</th>
+                    <th>ID CLIENTE</th>
+                    <th>FECHA</th>
+                    <th>HORA</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for asistencia in asistencias %}
+
+                <tr>
+
+                    <td>{{ asistencia.id_asistencia }}</td>
+
+                    <td>{{ asistencia.id_cliente }}</td>
+
+                    <td>{{ asistencia.fecha }}</td>
+
+                    <td>{{ asistencia.hora }}</td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>

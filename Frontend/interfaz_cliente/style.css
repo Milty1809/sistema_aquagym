@@ -47,4 +47,15 @@ body {
     margin-top: 50px;
     border-radius: 5px;
 }
+.panel_derecho{
+    flex: 1;
+    background: linear-gradient(150deg, #00045d, #ffffff);
+    height: 100%;
+}
+
+.panel_derecho iframe{
+    width: 100%;
+    height: 100%;
+    border: none;
+}
 

@@ -31,9 +31,9 @@ def registrar():
     ModeloUsuario.registrar_usuario(
         nombre,
         apellido,
-        username,
+        password,
         rol,
-        password
+        username
     )
 
     flash("Usuario registrado exitosamente")

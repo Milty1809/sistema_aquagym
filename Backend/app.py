@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, render_template
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -22,14 +22,28 @@ app.secret_key = os.getenv("SECRET_KEY")
 # =========================
 from Backend.controlador.controlador_login import controlador_login
 from Backend.controlador.controlador_usuario import controlador_usuario
-
+from Backend.controlador.controlador_asistencia import controlador_asistencia
 
 # =========================
 # REGISTRAR BLUEPRINTS
 # =========================
 app.register_blueprint(controlador_login)
 app.register_blueprint(controlador_usuario)
+app.register_blueprint(controlador_asistencia)
 
+
+@app.route("/panel_cl/membresias")
+def membresias():
+    return render_template(
+        "interfaz_cliente/paneles_cl/membresias/index.html"
+    )
+
+
+@app.route("/panel_cl/actividades")
+def actividades():
+    return render_template(
+        "interfaz_cliente/paneles_cl/actividades/index.html"
+    )
 
 # =========================
 # INICIAR SERVIDOR

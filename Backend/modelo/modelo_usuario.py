@@ -27,9 +27,10 @@ class ModeloUsuario:
     def registrar_usuario(
         nombre,
         apellido,
-        username,
+        password,
         rol,
-        password
+        username
+        
     ):
 
         conexion = conectar()
@@ -40,9 +41,10 @@ class ModeloUsuario:
             [
                 nombre,
                 apellido,
-                username,
+                password,
                 rol,
-                password
+                username
+                
             ]
         )
 
