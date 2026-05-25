@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Registrar Asistencia
+    </title>
+
+    <link
+        rel="stylesheet"
+
+        href="{{ url_for(
+            'static',
+            filename='interfaz_recepcionista/paneles_rc/reg_asistencia/style.css'
+        ) }}">
+
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>
+            REGISTRAR ASISTENCIA
+        </h1>
+
+        <!-- ========================= -->
+        <!-- FORMULARIO -->
+        <!-- ========================= -->
+
+        <form method="POST">
+
+            <input
+                type="hidden"
+                name="id_asistencia"
+
+                value="{{
+                    asistencia.id_asistencia
+                    if asistencia else ''
+                }}">
+
+            <!-- ID CLIENTE -->
+
+            <div class="grupo">
+
+                <label>
+                    ID Cliente
+                </label>
+
+                <input
+                    type="number"
+                    name="id_cliente"
+
+                    required
+
+                    value="{{
+                        asistencia.id_cliente
+                        if asistencia else ''
+                    }}">
+
+            </div>
+
+            <!-- FECHA -->
+
+            <div class="grupo">
+
+                <label>
+                    Fecha
+                </label>
+
+                <input
+                    type="date"
+                    name="fecha"
+
+                    required
+
+                    value="{{
+                        asistencia.fecha
+                        if asistencia else ''
+                    }}">
+
+            </div>
+
+            <!-- HORA -->
+
+            <div class="grupo">
+
+                <label>
+                    Hora
+                </label>
+
+                <input
+                    type="time"
+                    name="hora"
+
+                    required
+
+                    value="{{
+                        asistencia.hora
+                        if asistencia else ''
+                    }}">
+
+            </div>
+
+            <!-- BOTONES -->
+
+            <div class="botones">
+
+                <!-- GUARDAR -->
+
+                <button
+                    type="submit"
+                    name="accion"
+                    value="guardar"
+                    class="guardar">
+
+                    Guardar
+
+                </button>
+
+                <!-- EDITAR -->
+
+                <button
+                    type="submit"
+                    name="accion"
+                    value="editar"
+                    class="editar">
+
+                    Editar
+
+                </button>
+
+            </div>
+
+        </form>
+
+        <!-- ========================= -->
+        <!-- TABLA -->
+        <!-- ========================= -->
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>ID Cliente</th>
+
+                    <th>Fecha</th>
+
+                    <th>Hora</th>
+
+                    <th>Acciones</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for asistencia in asistencias %}
+
+                <tr>
+
+                    <td>
+                        {{ asistencia.id_asistencia }}
+                    </td>
+
+                    <td>
+                        {{ asistencia.id_cliente }}
+                    </td>
+
+                    <td>
+                        {{ asistencia.fecha }}
+                    </td>
+
+                    <td>
+                        {{ asistencia.hora }}
+                    </td>
+
+                    <td class="acciones">
+
+                        <!-- SELECCIONAR -->
+
+                        <form
+                            method="POST"
+                            style="display:inline;">
+
+                            <input
+                                type="hidden"
+                                name="id_asistencia"
+
+                                value="{{
+                                    asistencia.id_asistencia
+                                }}">
+
+                            <input
+                                type="hidden"
+                                name="id_cliente"
+
+                                value="{{
+                                    asistencia.id_cliente
+                                }}">
+
+                            <input
+                                type="hidden"
+                                name="fecha"
+
+                                value="{{
+                                    asistencia.fecha
+                                }}">
+
+                            <input
+                                type="hidden"
+                                name="hora"
+
+                                value="{{
+                                    asistencia.hora
+                                }}">
+
+                            <button
+                                type="submit"
+                                name="accion"
+                                value="seleccionar"
+
+                                class="editar">
+
+                                Seleccionar
+
+                            </button>
+
+                        </form>
+
+                        <!-- ELIMINAR -->
+
+                        <form
+                            method="POST"
+                            style="display:inline;">
+
+                            <input
+                                type="hidden"
+                                name="id_asistencia"
+
+                                value="{{
+                                    asistencia.id_asistencia
+                                }}">
+
+                            <button
+                                type="submit"
+                                name="accion"
+                                value="eliminar"
+
+                                class="eliminar">
+
+                                Eliminar
+
+                            </button>
+
+                        </form>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>

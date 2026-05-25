@@ -3,7 +3,7 @@ from Backend.modelo.modelo_login import ModeloLogin
 
 controlador_login = Blueprint('controlador_login', __name__)
 
-
+# Rutas para la autenticación y navegación
 @controlador_login.route('/')
 @controlador_login.route('/login')
 def login():
@@ -13,10 +13,15 @@ def login():
 def interfazCL():
     return render_template('interfaz_cliente/index.html')
 
+@controlador_login.route('/interfazRC')
+def interfazRC():
+    return render_template('interfaz_recepcionista/index.html')
+
 @controlador_login.route('/interfazAD')
 def interfazAD():
     return render_template('interfaz_admin/index.html')
 
+# Ruta para manejar el inicio de sesión
 @controlador_login.route('/iniciar_sesion', methods=['POST'])
 def iniciar_sesion():
 
@@ -43,6 +48,12 @@ def iniciar_sesion():
         flash("Inicio de sesión exitoso")
 
         return redirect('/interfazCL')
+    
+    if usuario and usuario['rol'] == 'recepcionista':
+
+        flash("Inicio de sesión exitoso")
+
+        return redirect('/interfazRC')
 
     flash("Usuario o contraseña incorrectos")
 
