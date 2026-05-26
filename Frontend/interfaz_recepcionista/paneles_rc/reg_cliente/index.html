@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        REGISTRAR CLIENTES
+    </title>
+
+    <link
+        rel="stylesheet"
+
+        href="{{ url_for(
+            'static',
+            filename='interfaz_recepcionista/paneles_rc/reg_cliente/style.css'
+        ) }}">
+
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>
+            REGISTRO DE CLIENTES
+        </h1>
+
+        <!-- ========================= -->
+        <!-- FORMULARIO -->
+        <!-- ========================= -->
+
+        <form method="POST">
+
+            <!-- ID OCULTO -->
+
+            <input
+                type="hidden"
+                name="id_cliente"
+
+                value="{{
+                    cliente.id_cliente
+                    if cliente else ''
+                }}">
+
+            <!-- NOMBRE -->
+
+            <div class="grupo">
+
+                <label>
+                    Nombre
+                </label>
+
+                <input
+                    type="text"
+                    name="nombre"
+
+                    required
+
+                    value="{{
+                        cliente.nombre
+                        if cliente else ''
+                    }}">
+
+            </div>
+
+            <!-- APELLIDO -->
+
+            <div class="grupo">
+
+                <label>
+                    Apellido
+                </label>
+
+                <input
+                    type="text"
+                    name="apellido"
+
+                    required
+
+                    value="{{
+                        cliente.apellido
+                        if cliente else ''
+                    }}">
+
+            </div>
+
+            <!-- CI -->
+
+            <div class="grupo">
+
+                <label>
+                    CI
+                </label>
+
+                <input
+                    type="text"
+                    name="ci"
+
+                    required
+
+                    value="{{
+                        cliente.ci
+                        if cliente else ''
+                    }}">
+
+            </div>
+
+            <!-- BOTONES -->
+
+            <div class="botones">
+
+                <!-- GUARDAR -->
+
+                <button
+                    type="submit"
+                    name="accion"
+                    value="guardar"
+
+                    class="guardar">
+
+                    Guardar
+
+                </button>
+
+                <!-- EDITAR -->
+
+                <button
+                    type="submit"
+                    name="accion"
+                    value="editar"
+
+                    class="editar">
+
+                    Editar
+
+                </button>
+
+            </div>
+
+        </form>
+
+        <!-- ========================= -->
+        <!-- TABLA -->
+        <!-- ========================= -->
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Nombre</th>
+
+                    <th>Apellido</th>
+
+                    <th>CI</th>
+
+                    <th>Acciones</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for cliente in clientes %}
+
+                <tr>
+
+                    <!-- ID -->
+
+                    <td>
+                        {{ cliente.id_cliente }}
+                    </td>
+
+                    <!-- NOMBRE -->
+
+                    <td>
+                        {{ cliente.nombre }}
+                    </td>
+
+                    <!-- APELLIDO -->
+
+                    <td>
+                        {{ cliente.apellido }}
+                    </td>
+
+                    <!-- CI -->
+
+                    <td>
+                        {{ cliente.ci }}
+                    </td>
+
+                    <!-- ACCIONES -->
+
+                    <td class="acciones">
+
+                        <!-- SELECCIONAR -->
+
+                        <form
+                            method="POST"
+                            style="display:inline;">
+
+                            <input
+                                type="hidden"
+                                name="id_cliente"
+
+                                value="{{
+                                    cliente.id_cliente
+                                }}">
+
+                            <input
+                                type="hidden"
+                                name="nombre"
+
+                                value="{{
+                                    cliente.nombre
+                                }}">
+
+                            <input
+                                type="hidden"
+                                name="apellido"
+
+                                value="{{
+                                    cliente.apellido
+                                }}">
+
+                            <input
+                                type="hidden"
+                                name="ci"
+
+                                value="{{
+                                    cliente.ci
+                                }}">
+
+                            <button
+                                type="submit"
+                                name="accion"
+                                value="seleccionar"
+
+                                class="editar">
+
+                                Seleccionar
+
+                            </button>
+
+                        </form>
+
+                        <!-- ELIMINAR -->
+
+                        <form
+                            method="POST"
+                            style="display:inline;">
+
+                            <input
+                                type="hidden"
+                                name="id_cliente"
+
+                                value="{{
+                                    cliente.id_cliente
+                                }}">
+
+                            <button
+                                type="submit"
+                                name="accion"
+                                value="eliminar"
+
+                                class="eliminar">
+
+                                Eliminar
+
+                            </button>
+
+                        </form>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>
