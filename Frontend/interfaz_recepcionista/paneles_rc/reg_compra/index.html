@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        REGISTRAR COMPRA
+    </title>
+
+    <link
+        rel="stylesheet"
+
+        href="{{ url_for(
+            'static',
+            filename='interfaz_recepcionista/paneles_rc/reg_compra/style.css'
+        ) }}">
+
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>
+            REGISTRO DE COMPRAS
+        </h1>
+
+        <!-- ========================= -->
+        <!-- FORMULARIO -->
+        <!-- ========================= -->
+
+        <form method="POST">
+
+            <!-- ID OCULTO -->
+
+            <input
+                type="hidden"
+                name="id_cliente_membresia"
+
+                value="{{
+                    compra.id_cliente_membresia
+                    if compra else ''
+                }}">
+
+            <!-- CLIENTE -->
+
+            <div class="grupo">
+
+                <label>
+                    Cliente
+                </label>
+
+                <select
+                    name="id_cliente"
+                    required>
+
+                    <option value="">
+                        Seleccione cliente
+                    </option>
+
+                    {% for cliente in clientes %}
+
+                    <option
+
+                        value="{{ cliente.id_cliente }}"
+
+                        {% if compra and
+                        compra.id_cliente ==
+                        cliente.id_cliente %}
+
+                        selected
+
+                        {% endif %}>
+
+                        {{ cliente.nombre }}
+                        {{ cliente.apellido }}
+
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+            <!-- MEMBRESIA -->
+
+            <div class="grupo">
+
+                <label>
+                    Membresía
+                </label>
+
+                <select
+                    name="id_membresia"
+                    required>
+
+                    <option value="">
+                        Seleccione membresía
+                    </option>
+
+                    {% for membresia in membresias %}
+
+                    <option
+
+                        value="{{
+                            membresia.id_membresia
+                        }}"
+
+                        {% if compra and
+                        compra.id_membresia ==
+                        membresia.id_membresia %}
+
+                        selected
+
+                        {% endif %}>
+
+                        {{ membresia.nombre }}
+                        -
+                        Bs.
+                        {{ membresia.precio }}
+
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+            <!-- FECHA INICIO -->
+
+            <div class="grupo">
+
+                <label>
+                    Fecha Inicio
+                </label>
+
+                <input
+                    type="date"
+                    name="fecha_inicio"
+
+                    required
+
+                    value="{{
+                        compra.fecha_inicio
+                        if compra else ''
+                    }}">
+
+            </div>
+
+            <!-- FECHA FIN -->
+
+            <div class="grupo">
+
+                <label>
+                    Fecha Fin
+                </label>
+
+                <input
+                    type="date"
+                    name="fecha_fin"
+
+                    required
+
+                    value="{{
+                        compra.fecha_fin
+                        if compra else ''
+                    }}">
+
+            </div>
+
+            <!-- BOTONES -->
+
+            <div class="botones">
+
+                <!-- GUARDAR -->
+
+                <button
+                    type="submit"
+                    name="accion"
+                    value="guardar"
+
+                    class="guardar">
+
+                    Guardar
+
+                </button>
+
+                <!-- EDITAR -->
+
+                <button
+                    type="submit"
+                    name="accion"
+                    value="editar"
+
+                    class="editar">
+
+                    Editar
+
+                </button>
+
+            </div>
+
+        </form>
+
+        <!-- ========================= -->
+        <!-- TABLA -->
+        <!-- ========================= -->
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Cliente</th>
+
+                    <th>Membresía</th>
+
+                    <th>Inicio</th>
+
+                    <th>Fin</th>
+
+                    <th>Acciones</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for compra in compras %}
+
+                <tr>
+
+                    <!-- ID -->
+
+                    <td>
+                        {{ compra.id_cliente_membresia }}
+                    </td>
+
+                    <!-- CLIENTE -->
+
+                    <td>
+
+                        {{ compra.nombre }}
+                        {{ compra.apellido }}
+
+                    </td>
+
+                    <!-- MEMBRESIA -->
+
+                    <td>
+                        {{ compra.membresia }}
+                    </td>
+
+                    <!-- FECHA INICIO -->
+
+                    <td>
+                        {{ compra.fecha_inicio }}
+                    </td>
+
+                    <!-- FECHA FIN -->
+
+                    <td>
+                        {{ compra.fecha_fin }}
+                    </td>
+
+                    <!-- ACCIONES -->
+
+                    <td class="acciones">
+
+                        <!-- SELECCIONAR -->
+
+                        <form
+                            method="POST"
+                            style="display:inline;">
+
+                            <input
+                                type="hidden"
+                                name="id_cliente_membresia"
+
+                                value="{{
+                                    compra.id_cliente_membresia
+                                }}">
+
+                            <input
+                                type="hidden"
+                                name="id_cliente"
+
+                                value="{{
+                                    compra.id_cliente
+                                }}">
+
+                            <input
+                                type="hidden"
+                                name="id_membresia"
+
+                                value="{{
+                                    compra.id_membresia
+                                }}">
+
+                            <input
+                                type="hidden"
+                                name="fecha_inicio"
+
+                                value="{{
+                                    compra.fecha_inicio
+                                }}">
+
+                            <input
+                                type="hidden"
+                                name="fecha_fin"
+
+                                value="{{
+                                    compra.fecha_fin
+                                }}">
+
+                            <button
+                                type="submit"
+                                name="accion"
+                                value="seleccionar"
+
+                                class="editar">
+
+                                Seleccionar
+
+                            </button>
+
+                        </form>
+
+                        <!-- ELIMINAR -->
+
+                        <form
+                            method="POST"
+                            style="display:inline;">
+
+                            <input
+                                type="hidden"
+                                name="id_cliente_membresia"
+
+                                value="{{
+                                    compra.id_cliente_membresia
+                                }}">
+
+                            <button
+                                type="submit"
+                                name="accion"
+                                value="eliminar"
+
+                                class="eliminar">
+
+                                Eliminar
+
+                            </button>
+
+                        </form>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>
