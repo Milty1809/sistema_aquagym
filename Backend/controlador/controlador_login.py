@@ -21,6 +21,10 @@ def interfazRC():
 def interfazAD():
     return render_template('interfaz_admin/index.html')
 
+@controlador_login.route('/interfazENT')
+def interfazENT():
+    return render_template('interfaz_entrenador/index.html')
+
 # Ruta para manejar el inicio de sesión
 @controlador_login.route('/iniciar_sesion', methods=['POST'])
 def iniciar_sesion():
@@ -54,6 +58,12 @@ def iniciar_sesion():
         flash("Inicio de sesión exitoso")
 
         return redirect('/interfazRC')
+
+    if usuario and usuario['rol'] == 'entrenador':
+
+        flash("Inicio de sesión exitoso")
+
+        return redirect('/interfazENT')
 
     flash("Usuario o contraseña incorrectos")
 

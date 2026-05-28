@@ -1,0 +1,142 @@
+.crud-maquinas
+{
+    font-family: Arial, sans-serif;
+}
+
+.crud-maquinas .contenedor
+{
+    width: 90%;
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+.crud-maquinas h1
+{
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+.crud-maquinas form
+{
+    margin-bottom: 20px;
+}
+
+.crud-maquinas .grupo
+{
+    margin-bottom: 15px;
+}
+
+.crud-maquinas .grupo label
+{
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-weight: bold;
+}
+
+.crud-maquinas .grupo input
+{
+    width: 100%;
+
+    padding: 10px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+    box-sizing: border-box;
+}
+
+.crud-maquinas .botones
+{
+    display: flex;
+
+    gap: 10px;
+}
+
+.crud-maquinas button
+{
+    padding: 10px 20px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    color: white;
+
+    font-weight: bold;
+}
+
+.crud-maquinas .guardar
+{
+    background: #28a745;
+}
+
+.crud-maquinas .editar
+{
+    background: #007bff;
+}
+
+.crud-maquinas .eliminar
+{
+    background: #dc3545;
+}
+
+.crud-maquinas table
+{
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+.crud-maquinas table th,
+.crud-maquinas table td
+{
+    border: 1px solid #ccc;
+
+    padding: 10px;
+
+    text-align: center;
+}
+
+.crud-maquinas table th
+{
+    background: #007bff;
+
+    color: white;
+}
+
+.crud-maquinas .acciones
+{
+    display: flex;
+
+    justify-content: center;
+
+    gap: 5px;
+}
+.crud-maquinas .grupo select
+{
+    width: 100%;
+
+    padding: 10px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+    box-sizing: border-box;
+}

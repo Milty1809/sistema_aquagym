@@ -7,10 +7,7 @@ controlador_clientes = Blueprint(
     __name__
 )
 
-# =========================
 # RECEPCIONISTA
-# =========================
-
 @controlador_clientes.route(
     "/panel_rc/reg_clientes",
     methods=["GET", "POST"]
@@ -19,18 +16,12 @@ def clientes():
 
     cliente = None
 
-    # =========================
     # POST
-    # =========================
-
     if request.method == "POST":
 
         accion = request.form["accion"]
 
-        # =====================
         # GUARDAR
-        # =====================
-
         if accion == "guardar":
 
             nombre = request.form["nombre"]
@@ -45,10 +36,7 @@ def clientes():
                 ci
             )
 
-        # =====================
         # SELECCIONAR
-        # =====================
-
         elif accion == "seleccionar":
 
             cliente = {
@@ -66,11 +54,7 @@ def clientes():
                 request.form["ci"]
 
             }
-
-        # =====================
         # EDITAR
-        # =====================
-
         elif accion == "editar":
 
             id_cliente = request.form[
@@ -96,10 +80,7 @@ def clientes():
                 ci
             )
 
-        # =====================
         # ELIMINAR
-        # =====================
-
         elif accion == "eliminar":
 
             id_cliente = request.form[
@@ -110,16 +91,10 @@ def clientes():
                 id_cliente
             )
 
-    # =========================
     # OBTENER CLIENTES
-    # =========================
-
     datos = ModeloClientes.obtener_clientes()
 
-    # =========================
     # RETORNAR VISTA
-    # =========================
-
     return render_template(
         "interfaz_recepcionista/paneles_rc/reg_cliente/index.html",
 

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Registrar Máquina
+    </title>
+
+    <link
+        rel="stylesheet"
+
+        href="{{ url_for(
+            'static',
+            filename='interfaz_entrenador/paneles_ent/reg_maquinas/style.css'
+        ) }}">
+
+</head>
+
+<body>
+
+    <div class="crud-maquinas">
+
+        <div class="contenedor">
+
+            <h1>
+                REGISTRAR MÁQUINA
+            </h1>
+
+            <form method="POST">
+
+                <input
+                    type="hidden"
+                    name="id_maquina"
+
+                    value="{{
+                        maquina.id_maquina
+                        if maquina else ''
+                    }}">
+
+                <!-- ID ACTIVIDAD -->
+
+                <div class="grupo">
+
+                    <label>
+                        ID Actividad
+                    </label>
+
+                    <select
+        name="id_actividad"
+        required>
+
+        <option value="">
+            Seleccione una actividad
+        </option>
+
+        {% for actividad in actividades %}
+
+        <option
+            value="{{ actividad.id_actividad }}"
+
+            {% if maquina and maquina.id_actividad == actividad.id_actividad %}
+                selected
+            {% endif %}>
+
+            {{ actividad.nombre }}
+
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+                </div>
+
+                <!-- NOMBRE -->
+
+                <div class="grupo">
+
+                    <label>
+                        Nombre Máquina
+                    </label>
+
+                    <input
+                        type="text"
+                        name="nombre"
+
+                        required
+
+                        value="{{
+                            maquina.nombre
+                            if maquina else ''
+                        }}">
+
+                </div>
+
+                <!-- ESTADO -->
+
+                <div class="grupo">
+
+                    <label>
+                        Estado
+                    </label>
+
+                    <input
+                        type="text"
+                        name="estado"
+
+                        placeholder="Disponible / Mantenimiento"
+
+                        required
+
+                        value="{{
+                            maquina.estado
+                            if maquina else ''
+                        }}">
+
+                </div>
+
+                <!-- BOTONES -->
+
+                <div class="botones">
+
+                    <button
+                        type="submit"
+                        name="accion"
+                        value="guardar"
+
+                        class="guardar">
+
+                        Guardar
+
+                    </button>
+
+                    <button
+                        type="submit"
+                        name="accion"
+                        value="editar"
+
+                        class="editar">
+
+                        Editar
+
+                    </button>
+
+                </div>
+
+            </form>
+
+            <!-- TABLA -->
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>ID Actividad</th>
+
+                        <th>Nombre</th>
+
+                        <th>Estado</th>
+
+                        <th>Acciones</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for maquina in maquinas %}
+
+                    <tr>
+
+                        <td>
+                            {{ maquina.id_maquina }}
+                        </td>
+
+                        <td>
+                            {{ maquina.id_actividad }}
+                        </td>
+
+                        <td>
+                            {{ maquina.nombre }}
+                        </td>
+
+                        <td>
+                            {{ maquina.estado }}
+                        </td>
+
+                        <td class="acciones">
+
+                            <!-- SELECCIONAR -->
+
+                            <form
+                                method="POST"
+                                style="display:inline;">
+
+                                <input
+                                    type="hidden"
+                                    name="id_maquina"
+
+                                    value="{{
+                                        maquina.id_maquina
+                                    }}">
+
+                                <input
+                                    type="hidden"
+                                    name="id_actividad"
+
+                                    value="{{
+                                        maquina.id_actividad
+                                    }}">
+
+                                <input
+                                    type="hidden"
+                                    name="nombre"
+
+                                    value="{{
+                                        maquina.nombre
+                                    }}">
+
+                                <input
+                                    type="hidden"
+                                    name="estado"
+
+                                    value="{{
+                                        maquina.estado
+                                    }}">
+
+                                <button
+                                    type="submit"
+                                    name="accion"
+                                    value="seleccionar"
+
+                                    class="editar">
+
+                                    Seleccionar
+
+                                </button>
+
+                            </form>
+
+                            <!-- ELIMINAR -->
+
+                            <form
+                                method="POST"
+                                style="display:inline;">
+
+                                <input
+                                    type="hidden"
+                                    name="id_maquina"
+
+                                    value="{{
+                                        maquina.id_maquina
+                                    }}">
+
+                                <button
+                                    type="submit"
+                                    name="accion"
+                                    value="eliminar"
+
+                                    class="eliminar">
+
+                                    Eliminar
+
+                                </button>
+
+                            </form>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
