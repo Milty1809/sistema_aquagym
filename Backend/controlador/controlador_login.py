@@ -5,6 +5,8 @@ controlador_login = Blueprint('controlador_login', __name__)
 
 # Rutas para la autenticación y navegación
 @controlador_login.route('/')
+def inicio():
+    return render_template('interfaz_inicio/index.html')
 @controlador_login.route('/login')
 def login():
     return render_template('interfaz_inicio_sesion/index.html')

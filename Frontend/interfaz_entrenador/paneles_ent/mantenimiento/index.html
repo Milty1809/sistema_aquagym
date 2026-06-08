@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Registro de Mantenimiento
+    </title>
+
+    <link
+        rel="stylesheet"
+
+        href="{{ url_for(
+            'static',
+            filename='interfaz_entrenador/paneles_ent/mantenimiento/style.css'
+        ) }}">
+
+</head>
+
+<body>
+
+<div class="crud-mantenimiento">
+
+    <div class="contenedor">
+
+        <h1>
+            REGISTRO DE MANTENIMIENTO
+        </h1>
+
+        <form method="POST">
+
+            <input
+                type="hidden"
+                name="id_mantenimiento"
+
+                value="{{
+                    mantenimiento.id_mantenimiento
+                    if mantenimiento else ''
+                }}">
+
+            <!-- MAQUINA -->
+
+            <div class="grupo">
+
+                <label>
+                    Máquina
+                </label>
+
+                <select
+                    name="id_maquina"
+                    required>
+
+                    <option value="">
+                        Seleccione una máquina
+                    </option>
+
+                    {% for maquina in maquinas %}
+
+                    <option
+                        value="{{ maquina.id_maquina }}"
+
+                        {% if mantenimiento and mantenimiento.id_maquina == maquina.id_maquina %}
+                            selected
+                        {% endif %}>
+
+                        {{ maquina.nombre }}
+
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+            <!-- FECHA -->
+
+            <div class="grupo">
+
+                <label>
+                    Fecha
+                </label>
+
+                <input
+                    type="date"
+                    name="fecha"
+
+                    required
+
+                    value="{{
+                        mantenimiento.fecha
+                        if mantenimiento else ''
+                    }}">
+
+            </div>
+
+            <!-- DESCRIPCION -->
+
+            <div class="grupo">
+
+                <label>
+                    Descripción
+                </label>
+
+                <textarea
+                    name="descripcion"
+                    rows="4"
+
+                    required>{{
+                    mantenimiento.descripcion
+                    if mantenimiento else ''
+                }}</textarea>
+
+            </div>
+
+            <!-- BOTONES -->
+
+            <div class="botones">
+
+                <button
+                    type="submit"
+                    name="accion"
+                    value="guardar"
+
+                    class="guardar">
+
+                    Guardar
+
+                </button>
+
+                <button
+                    type="submit"
+                    name="accion"
+                    value="editar"
+
+                    class="editar">
+
+                    Editar
+
+                </button>
+
+            </div>
+
+        </form>
+
+        <!-- TABLA -->
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Máquina</th>
+
+                    <th>Fecha</th>
+
+                    <th>Descripción</th>
+
+                    <th>Acciones</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for mantenimiento in mantenimientos %}
+
+                <tr>
+
+                    <td>
+                        {{ mantenimiento.id_mantenimiento }}
+                    </td>
+
+                    <td>
+                        {{ mantenimiento.id_maquina }}
+                    </td>
+
+                    <td>
+                        {{ mantenimiento.fecha }}
+                    </td>
+
+                    <td>
+                        {{ mantenimiento.descripcion }}
+                    </td>
+
+                    <td class="acciones">
+
+                        <!-- SELECCIONAR -->
+
+                        <form
+                            method="POST"
+                            style="display:inline;">
+
+                            <input
+                                type="hidden"
+                                name="id_mantenimiento"
+
+                                value="{{
+                                    mantenimiento.id_mantenimiento
+                                }}">
+
+                            <input
+                                type="hidden"
+                                name="id_maquina"
+
+                                value="{{
+                                    mantenimiento.id_maquina
+                                }}">
+
+                            <input
+                                type="hidden"
+                                name="fecha"
+
+                                value="{{
+                                    mantenimiento.fecha
+                                }}">
+
+                            <input
+                                type="hidden"
+                                name="descripcion"
+
+                                value="{{
+                                    mantenimiento.descripcion
+                                }}">
+
+                            <button
+                                type="submit"
+                                name="accion"
+                                value="seleccionar"
+
+                                class="editar">
+
+                                Seleccionar
+
+                            </button>
+
+                        </form>
+
+                        <!-- ELIMINAR -->
+
+                        <form
+                            method="POST"
+                            style="display:inline;">
+
+                            <input
+                                type="hidden"
+                                name="id_mantenimiento"
+
+                                value="{{
+                                    mantenimiento.id_mantenimiento
+                                }}">
+
+                            <button
+                                type="submit"
+                                name="accion"
+                                value="eliminar"
+
+                                class="eliminar">
+
+                                Eliminar
+
+                            </button>
+
+                        </form>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

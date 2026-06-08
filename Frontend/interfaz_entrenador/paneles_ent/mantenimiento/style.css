@@ -1,0 +1,141 @@
+.crud-mantenimiento
+{
+    font-family: Arial, sans-serif;
+}
+
+.crud-mantenimiento .contenedor
+{
+    width: 90%;
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+.crud-mantenimiento h1
+{
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+.crud-mantenimiento form
+{
+    margin-bottom: 20px;
+}
+
+.crud-mantenimiento .grupo
+{
+    margin-bottom: 15px;
+}
+
+.crud-mantenimiento .grupo label
+{
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-weight: bold;
+}
+
+.crud-mantenimiento .grupo input,
+.crud-mantenimiento .grupo select,
+.crud-mantenimiento .grupo textarea
+{
+    width: 100%;
+
+    padding: 10px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+    box-sizing: border-box;
+
+    font-family: Arial, sans-serif;
+}
+
+.crud-mantenimiento .grupo textarea
+{
+    resize: vertical;
+
+    min-height: 100px;
+}
+
+.crud-mantenimiento .botones
+{
+    display: flex;
+
+    gap: 10px;
+}
+
+.crud-mantenimiento button
+{
+    padding: 10px 20px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    color: white;
+
+    font-weight: bold;
+}
+
+.crud-mantenimiento .guardar
+{
+    background: #28a745;
+}
+
+.crud-mantenimiento .editar
+{
+    background: #007bff;
+}
+
+.crud-mantenimiento .eliminar
+{
+    background: #dc3545;
+}
+
+.crud-mantenimiento table
+{
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+.crud-mantenimiento table th,
+.crud-mantenimiento table td
+{
+    border: 1px solid #ccc;
+
+    padding: 10px;
+
+    text-align: center;
+}
+
+.crud-mantenimiento table th
+{
+    background: #007bff;
+
+    color: white;
+}
+
+.crud-mantenimiento .acciones
+{
+    display: flex;
+
+    justify-content: center;
+
+    gap: 5px;
+}

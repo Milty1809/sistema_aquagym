@@ -27,6 +27,7 @@ from Backend.controlador.controlador_actividades import controlador_actividades
 from Backend.controlador.controlador_clientes import controlador_clientes
 from Backend.controlador.controlador_cliente_membresia import controlador_cliente_membresia
 from Backend.controlador.controlador_maquina import controlador_maquina
+from Backend.controlador.controlador_mantenimiento import controlador_mantenimiento
 
 
 # REGISTRAR BLUEPRINTS
@@ -38,6 +39,7 @@ app.register_blueprint(controlador_actividades)
 app.register_blueprint(controlador_clientes)
 app.register_blueprint(controlador_cliente_membresia)
 app.register_blueprint(controlador_maquina)
+app.register_blueprint(controlador_mantenimiento)
 
 @app.route("/panel_cl/membresias")
 def membresias():

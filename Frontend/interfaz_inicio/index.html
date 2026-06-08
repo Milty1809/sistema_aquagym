@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aqua Gym Club — Inicio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='interfaz_inicio/style.css') }}"/>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo-box">🏊</div>
+    <div class="nav-brand-text">
+      Aqua Gym Club
+      <span>Aquatic &amp; Fitness</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#" onclick="show('inicio', null); return false">Inicio</a></li>
+    <li><a href="#" onclick="show('membresias', null); return false">Membresías</a></li>
+    <li><a href="#" onclick="show('actividades', null); return false">Actividades</a></li>
+    <li><a href="#" onclick="show('horarios', null); return false">Horarios</a></li>
+  </ul>
+  <a href="/login">
+    <button class="btn-nav-login">Iniciar Sesión</button>
+</a>
+</nav>
+
+<div class="page-body">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sidebar-title">Menú<br>Principal</div>
+    <nav class="sidebar-nav">
+      <button class="nav-btn active" onclick="show('inicio', this)">Inicio</button>
+      <button class="nav-btn"        onclick="show('membresias', this)">Membresías</button>
+      <button class="nav-btn"        onclick="show('actividades', this)">Actividades</button>
+      <button class="nav-btn"        onclick="show('horarios', this)">Horarios</button>
+      <a href="/login" style="text-decoration:none">
+        <button class="nav-btn login-btn">Iniciar Sesión</button>
+      </a>
+    </nav>
+    <div class="sidebar-logo">
+      <div class="logo-box">
+        <div class="logo-icon">🏊</div>
+        <div class="logo-name">Aqua Gym<br>Club</div>
+        <div class="logo-sub">Aquatic &amp; Fitness</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main">
+
+    <!-- INICIO -->
+    <div class="section active" id="sec-inicio">
+      <div class="panel">
+        <div class="panel-title">Bienvenido a Aqua Gym Club</div>
+
+        <div class="hero-row">
+          <div class="hero-text">
+            <div class="hero-badge">&#9679; Abierto 24/7</div>
+            <h1 class="hero-title">Tu mejor<br>versión<br><span>comienza aquí</span></h1>
+            <p class="hero-desc">El centro acuático y fitness de Cochabamba con equipos de primer nivel, entrenadores certificados y el ambiente que necesitas para superarte.</p>
+            <div class="hero-btns">
+              <button class="btn btn-blue"  onclick="show('membresias', null)">Ver Membresías</button>
+              <button class="btn btn-green" onclick="show('actividades', null)">Ver Actividades</button>
+              <a href="/login" style="text-decoration:none">
+                <button class="btn btn-outline">Iniciar Sesión</button>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-box">
+            <div class="stat-num">1200<span style="font-size:1.3rem">+</span></div>
+            <div class="stat-lbl">Miembros activos</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">30<span style="font-size:1.3rem">+</span></div>
+            <div class="stat-lbl">Clases por semana</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">15</div>
+            <div class="stat-lbl">Años de experiencia</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">8</div>
+            <div class="stat-lbl">Entrenadores</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MEMBRESÍAS -->
+    <div class="section" id="sec-membresias">
+      <div class="panel">
+        <div class="panel-title">Membresías</div>
+        <div class="plans-grid">
+
+          <div class="plan-card">
+            <div class="plan-name">Básico</div>
+            <div class="plan-price"><sup>Bs </sup>250<sub>/mes</sub></div>
+            <div class="plan-div"></div>
+            <ul class="plan-feats">
+              <li><span class="ck">✓</span> Acceso piscina</li>
+              <li><span class="ck">✓</span> Sala de pesas</li>
+              <li><span class="ck">✓</span> Casillero personal</li>
+              <li class="off"><span class="ck off">✗</span> Clases grupales</li>
+              <li class="off"><span class="ck off">✗</span> Entrenador personal</li>
+              <li class="off"><span class="ck off">✗</span> Plan nutricional</li>
+            </ul>
+            <a href="/login" style="text-decoration:none">
+              <button class="plan-btn">Inscribirme</button>
+            </a>
+          </div>
+
+          <div class="plan-card featured">
+            <div class="plan-pop">Más popular</div>
+            <div class="plan-name">Pro</div>
+            <div class="plan-price"><sup>Bs </sup>450<sub>/mes</sub></div>
+            <div class="plan-div"></div>
+            <ul class="plan-feats">
+              <li><span class="ck">✓</span> Acceso piscina</li>
+              <li><span class="ck">✓</span> Sala de pesas</li>
+              <li><span class="ck">✓</span> Casillero personal</li>
+              <li><span class="ck">✓</span> Clases grupales</li>
+              <li><span class="ck">✓</span> 2 sesiones / entrenador</li>
+              <li class="off"><span class="ck off">✗</span> Plan nutricional</li>
+            </ul>
+            <a href="/login" style="text-decoration:none">
+              <button class="plan-btn featured-btn">Inscribirme</button>
+            </a>
+          </div>
+
+          <div class="plan-card">
+            <div class="plan-name">Élite</div>
+            <div class="plan-price"><sup>Bs </sup>750<sub>/mes</sub></div>
+            <div class="plan-div"></div>
+            <ul class="plan-feats">
+              <li><span class="ck">✓</span> Acceso piscina</li>
+              <li><span class="ck">✓</span> Sala de pesas</li>
+              <li><span class="ck">✓</span> Casillero premium</li>
+              <li><span class="ck">✓</span> Clases grupales</li>
+              <li><span class="ck">✓</span> Entrenador ilimitado</li>
+              <li><span class="ck">✓</span> Plan nutricional mensual</li>
+            </ul>
+            <a href="/login" style="text-decoration:none">
+              <button class="plan-btn">Inscribirme</button>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTIVIDADES -->
+    <div class="section" id="sec-actividades">
+      <div class="panel">
+        <div class="panel-title">Actividades y Clases</div>
+        <div class="acts-grid">
+
+          <div class="act-card">
+            <span class="act-icon">🏊</span>
+            <div class="act-name">Natación</div>
+            <div class="act-desc">Piscina semi-olímpica de 25m con carriles para todos los niveles. Clases de natación adultos y niños.</div>
+            <span class="act-tag">Libre acceso</span>
+          </div>
+
+          <div class="act-card">
+            <span class="act-icon">🏋️</span>
+            <div class="act-name">Musculación</div>
+            <div class="act-desc">Sala de pesas equipada con máquinas de última generación, pesos libres y zona funcional.</div>
+            <span class="act-tag">Todos los niveles</span>
+          </div>
+
+          <div class="act-card">
+            <span class="act-icon">🚴</span>
+            <div class="act-name">Spinning</div>
+            <div class="act-desc">Clases de ciclismo indoor de alta energía con instructores certificados y música motivante.</div>
+            <span class="act-tag">45 min</span>
+          </div>
+
+          <div class="act-card">
+            <span class="act-icon">🧘</span>
+            <div class="act-name">Yoga &amp; Pilates</div>
+            <div class="act-desc">Recuperación activa, flexibilidad y equilibrio mental. Clases para principiantes y avanzados.</div>
+            <span class="act-tag">50 min</span>
+          </div>
+
+          <div class="act-card">
+            <span class="act-icon">🔥</span>
+            <div class="act-name">Crossfit</div>
+            <div class="act-desc">Entrenamiento funcional de alta intensidad. WODs variados para maximizar tu rendimiento físico.</div>
+            <span class="act-tag">45 min</span>
+          </div>
+
+          <div class="act-card">
+            <span class="act-icon">🥊</span>
+            <div class="act-name">Boxeo</div>
+            <div class="act-desc">Clases de boxeo y kickboxing para todos los niveles. Ring profesional y sacos de entrenamiento.</div>
+            <span class="act-tag">60 min</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- HORARIOS -->
+    <div class="section" id="sec-horarios">
+      <div class="panel">
+        <div class="panel-title">Horarios Semanales</div>
+        <div class="sched-grid">
+
+          <div class="sched-col">
+            <div class="sched-day">Lunes</div>
+            <div class="sched-classes">
+              <div class="sched-class"><div class="sched-time">06:00</div>Natación</div>
+              <div class="sched-class"><div class="sched-time">08:00</div>Crossfit</div>
+              <div class="sched-class"><div class="sched-time">18:00</div>Spinning</div>
+              <div class="sched-class"><div class="sched-time">20:00</div>Yoga</div>
+            </div>
+          </div>
+
+          <div class="sched-col">
+            <div class="sched-day">Martes</div>
+            <div class="sched-classes">
+              <div class="sched-class"><div class="sched-time">07:00</div>Boxeo</div>
+              <div class="sched-class"><div class="sched-time">10:00</div>Pilates</div>
+              <div class="sched-class"><div class="sched-time">19:00</div>Crossfit</div>
+            </div>
+          </div>
+
+          <div class="sched-col">
+            <div class="sched-day">Miércoles</div>
+            <div class="sched-classes">
+              <div class="sched-class"><div class="sched-time">06:00</div>Natación</div>
+              <div class="sched-class"><div class="sched-time">08:00</div>Crossfit</div>
+              <div class="sched-class"><div class="sched-time">18:30</div>Spinning</div>
+              <div class="sched-class"><div class="sched-time">20:00</div>Boxeo</div>
+            </div>
+          </div>
+
+          <div class="sched-col">
+            <div class="sched-day">Jueves</div>
+            <div class="sched-classes">
+              <div class="sched-class"><div class="sched-time">07:00</div>Yoga</div>
+              <div class="sched-class"><div class="sched-time">11:00</div>Boxeo</div>
+              <div class="sched-class"><div class="sched-time">19:00</div>Spinning</div>
+            </div>
+          </div>
+
+          <div class="sched-col">
+            <div class="sched-day">Viernes</div>
+            <div class="sched-classes">
+              <div class="sched-class"><div class="sched-time">06:00</div>Natación</div>
+              <div class="sched-class"><div class="sched-time">08:00</div>Crossfit</div>
+              <div class="sched-class"><div class="sched-time">18:00</div>Boxeo</div>
+              <div class="sched-class"><div class="sched-time">20:30</div>Pilates</div>
+            </div>
+          </div>
+
+          <div class="sched-col">
+            <div class="sched-day">Sábado</div>
+            <div class="sched-classes">
+              <div class="sched-class"><div class="sched-time">08:00</div>Spinning</div>
+              <div class="sched-class"><div class="sched-time">10:00</div>Crossfit</div>
+              <div class="sched-class"><div class="sched-time">11:30</div>Yoga</div>
+            </div>
+          </div>
+
+          <div class="sched-col">
+            <div class="sched-day">Domingo</div>
+            <div class="sched-classes">
+              <div class="sched-class"><div class="sched-time">09:00</div>Natación</div>
+              <div class="sched-class"><div class="sched-time">11:00</div>Yoga</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  function show(name, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById('sec-' + name).classList.add('active');
+    if (btn) {
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+  }
+</script>
+</body>
+</html>

@@ -102,26 +102,41 @@
 
                 <!-- ESTADO -->
 
-                <div class="grupo">
+                <!-- ESTADO -->
 
-                    <label>
-                        Estado
-                    </label>
+<div class="grupo">
 
-                    <input
-                        type="text"
-                        name="estado"
+    <label>
+        Estado
+    </label>
 
-                        placeholder="Disponible / Mantenimiento"
+    <select
+        name="estado"
+        required>
 
-                        required
+        <option value="">
+            Seleccione un estado
+        </option>
 
-                        value="{{
-                            maquina.estado
-                            if maquina else ''
-                        }}">
+        <option
+            value="Disponible"
+            {% if maquina and maquina.estado == 'Disponible' %}
+                selected
+            {% endif %}>
+            Disponible
+        </option>
 
-                </div>
+        <option
+            value="Mantenimiento"
+            {% if maquina and maquina.estado == 'Mantenimiento' %}
+                selected
+            {% endif %}>
+            Mantenimiento
+        </option>
+
+    </select>
+
+</div>
 
                 <!-- BOTONES -->
 
