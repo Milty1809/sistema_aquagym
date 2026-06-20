@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Usuarios</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='interfaz_admin/paneles_ad/reg_usuarios/style.css') }}">
+</head>
+
+<body>
+
+<div class="contenedor">
+
+    <h1>GESTIÓN DE USUARIOS</h1>
+
+    <form method="POST">
+
+        <input type="hidden"
+               name="id_usuario"
+               value="{{ usuario_edit.id_usuario if usuario_edit else '' }}">
+
+        <div class="grupo">
+            <label>Nombre</label>
+            <input type="text"
+                   name="nombre"
+                   required
+                   value="{{ usuario_edit.nombre if usuario_edit else '' }}">
+        </div>
+
+        <div class="grupo">
+            <label>Apellido</label>
+            <input type="text"
+                   name="apellido"
+                   required
+                   value="{{ usuario_edit.apellido if usuario_edit else '' }}">
+        </div>
+
+        <div class="grupo">
+            <label>Usuario</label>
+            <input type="text"
+                   name="usuario"
+                   required
+                   value="{{ usuario_edit.usuario if usuario_edit else '' }}">
+        </div>
+
+        <div class="grupo">
+            <label>Contraseña</label>
+            <input type="password"
+                   name="password"
+                   required
+                   value="{{ usuario_edit.password if usuario_edit else '' }}">
+        </div>
+
+        <div class="grupo">
+            <label>Rol</label>
+
+            <select name="rol" required>
+
+                <option value="">Seleccione</option>
+
+                <option value="admin"
+                {% if usuario_edit and usuario_edit.rol == 'admin' %}
+                selected
+                {% endif %}>
+                Admin
+                </option>
+
+                <option value="recepcionista"
+                {% if usuario_edit and usuario_edit.rol == 'recepcionista' %}
+                selected
+                {% endif %}>
+                Recepcionista
+                </option>
+
+                <option value="maquinas"
+                {% if usuario_edit and usuario_edit.rol == 'maquinas' %}
+                selected
+                {% endif %}>
+                Máquinas
+                </option>
+
+                <option value="cliente"
+                {% if usuario_edit and usuario_edit.rol == 'cliente' %}
+                selected
+                {% endif %}>
+                Cliente
+                </option>
+
+            </select>
+        </div>
+
+        <div class="botones">
+
+            <button type="submit"
+                    name="accion"
+                    value="guardar"
+                    class="guardar">
+                Guardar
+            </button>
+
+            <button type="submit"
+                    name="accion"
+                    value="editar"
+                    class="editar">
+                Editar
+            </button>
+
+        </div>
+
+    </form>
+
+    <table>
+
+        <thead>
+
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Usuario</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for usuario in usuarios %}
+
+        <tr>
+
+            <td>{{ usuario.id_usuario }}</td>
+            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.apellido }}</td>
+            <td>{{ usuario.usuario }}</td>
+            <td>{{ usuario.rol }}</td>
+
+            <td class="acciones">
+
+                <form method="POST" style="display:inline;">
+
+                    <input type="hidden"
+                           name="id_usuario"
+                           value="{{ usuario.id_usuario }}">
+
+                    <input type="hidden"
+                           name="nombre"
+                           value="{{ usuario.nombre }}">
+
+                    <input type="hidden"
+                           name="apellido"
+                           value="{{ usuario.apellido }}">
+
+                    <input type="hidden"
+                           name="usuario"
+                           value="{{ usuario.usuario }}">
+
+                    <input type="hidden"
+                           name="password"
+                           value="{{ usuario.password }}">
+
+                    <input type="hidden"
+                           name="rol"
+                           value="{{ usuario.rol }}">
+
+                    <button type="submit"
+                            name="accion"
+                            value="seleccionar"
+                            class="editar">
+                        Seleccionar
+                    </button>
+
+                </form>
+
+                <form method="POST" style="display:inline;">
+
+                    <input type="hidden"
+                           name="id_usuario"
+                           value="{{ usuario.id_usuario }}">
+
+                    <button type="submit"
+                            name="accion"
+                            value="eliminar"
+                            class="eliminar">
+                        Eliminar
+                    </button>
+
+                </form>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>

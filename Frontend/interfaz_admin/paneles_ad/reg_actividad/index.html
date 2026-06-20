@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Actividades</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='interfaz_admin/paneles_ad/reg_actividad/style.css') }}">
+</head>
+
+<body>
+
+<div class="contenedor">
+
+    <h1>GESTIÓN DE ACTIVIDADES</h1>
+
+    <form method="POST">
+
+        <input type="hidden"
+               name="id_actividad"
+               value="{{ actividad_edit.id_actividad if actividad_edit else '' }}">
+
+        <div class="grupo">
+
+            <label>Nombre de la Actividad</label>
+
+            <input type="text"
+                   name="nombre"
+                   required
+                   value="{{ actividad_edit.nombre if actividad_edit else '' }}">
+
+        </div>
+
+        <div class="botones">
+
+            <button type="submit"
+                    name="accion"
+                    value="guardar"
+                    class="guardar">
+                Guardar
+            </button>
+
+            <button type="submit"
+                    name="accion"
+                    value="editar"
+                    class="editar">
+                Editar
+            </button>
+
+        </div>
+
+    </form>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>ID</th>
+                <th>Actividad</th>
+                <th>Acciones</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for actividad in actividades %}
+
+            <tr>
+
+                <td>{{ actividad.id_actividad }}</td>
+
+                <td>{{ actividad.nombre }}</td>
+
+                <td class="acciones">
+
+                    <form method="POST">
+
+                        <input type="hidden"
+                               name="id_actividad"
+                               value="{{ actividad.id_actividad }}">
+
+                        <input type="hidden"
+                               name="nombre"
+                               value="{{ actividad.nombre }}">
+
+                        <button type="submit"
+                                name="accion"
+                                value="seleccionar"
+                                class="editar">
+
+                            Seleccionar
+
+                        </button>
+
+                    </form>
+
+                    <form method="POST">
+
+                        <input type="hidden"
+                               name="id_actividad"
+                               value="{{ actividad.id_actividad }}">
+
+                        <button type="submit"
+                                name="accion"
+                                value="eliminar"
+                                class="eliminar">
+
+                            Eliminar
+
+                        </button>
+
+                    </form>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>

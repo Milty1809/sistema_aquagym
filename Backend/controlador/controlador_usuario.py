@@ -1,4 +1,4 @@
-from flask import Blueprint, flash, redirect, request
+from flask import Blueprint, flash, redirect, render_template, request
 
 from Backend.modelo.modelo_usuario import ModeloUsuario
 
@@ -39,3 +39,87 @@ def registrar():
     flash("Usuario registrado exitosamente")
 
     return redirect('/registro')
+
+@controlador_usuario.route(
+    '/usuarios',
+    methods=['GET', 'POST']
+)
+def usuarios():
+
+    usuario_edit = None
+
+    if request.method == 'POST':
+
+        accion = request.form.get('accion')
+
+        if accion == 'guardar':
+
+            nombre = request.form['nombre']
+            apellido = request.form['apellido']
+            usuario = request.form['usuario']
+            password = request.form['password']
+            rol = request.form['rol']
+
+            if ModeloUsuario.existe_usuario(usuario):
+
+                flash(
+                    "El usuario ya existe"
+                )
+
+            else:
+
+                ModeloUsuario.registrar_usuario(
+                    nombre,
+                    apellido,
+                    password,
+                    rol,
+                    usuario
+                )
+
+                flash(
+                    "Usuario registrado correctamente"
+                )
+
+        elif accion == 'editar':
+
+            ModeloUsuario.editar_usuario(
+                request.form['id_usuario'],
+                request.form['nombre'],
+                request.form['apellido'],
+                request.form['password'],
+                request.form['rol'],
+                request.form['usuario']
+            )
+
+            flash(
+                "Usuario actualizado correctamente"
+            )
+
+        elif accion == 'eliminar':
+
+            ModeloUsuario.eliminar_usuario(
+                request.form['id_usuario']
+            )
+
+            flash(
+                "Usuario eliminado correctamente"
+            )
+
+        elif accion == 'seleccionar':
+
+            usuario_edit = {
+                'id_usuario': request.form['id_usuario'],
+                'nombre': request.form['nombre'],
+                'apellido': request.form['apellido'],
+                'usuario': request.form['usuario'],
+                'password': request.form['password'],
+                'rol': request.form['rol']
+            }
+
+    usuarios = ModeloUsuario.obtener_usuarios()
+
+    return render_template(
+        'interfaz_admin/paneles_ad/reg_usuarios/index.html',
+        usuarios=usuarios,
+        usuario_edit=usuario_edit
+    )

@@ -61,7 +61,7 @@ def iniciar_sesion():
 
         return redirect('/interfazRC')
 
-    if usuario and usuario['rol'] == 'entrenador':
+    if usuario and usuario['rol'] == 'maquinas':
 
         flash("Inicio de sesión exitoso")
 
